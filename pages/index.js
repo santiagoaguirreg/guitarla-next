@@ -6,8 +6,10 @@ export default function Home() {
   return (
 <>
 
-      <Layout>
-
+      <Layout
+       title={'Inicio'}
+       description={"Blog de música"}
+      >
       <h1>
         Hola mundo
       </h1>
@@ -15,7 +17,7 @@ export default function Home() {
       <Link href="/nosotros"> Nosotros</Link>
 
       </Layout>
-      
+
  </>
   )
 }
