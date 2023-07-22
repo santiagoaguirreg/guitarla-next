@@ -1,15 +1,15 @@
 
 import Layout from '../components/layout'
 
-export default function Nosotros() {
+export default function Blog() {
   return (
 
     <Layout
-    title={'Nosotros'}
-    description={"Página de Nosotros..."}
+    title={'Blog'}
+    description={"Contenidos de GuitarLA"}
     >
        <h1>
-        Nosotros
+        Blog
        </h1>
     </Layout>
     
