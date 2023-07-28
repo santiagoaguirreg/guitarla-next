@@ -1,9 +1,30 @@
-import { Main } from 'next/document'
+import { useState, useEffect } from 'react'
 import Layout from '../components/layout'
 import styles from '../styles/carrito.module.css'
 import Image from 'next/image'
 
 export default function Carrito({carrito, actualizarCantidad}) {
+
+  const [total, setTotal] = useState(0);
+
+useEffect(() => {
+    // const calcularTotal = carrito.reduce(
+    //   (total, producto) => total + producto.cantidad * producto.precio,
+    //   0
+    // );
+
+    let suma = 0;
+ carrito.forEach((elemento) => {
+
+  suma += elemento.cantidad * elemento.precio;
+
+ })
+
+ setTotal(suma)
+
+  
+},[carrito])
+
   return (
      <Layout title='Carrito de Compras'>
           <main classname="contenedor">
@@ -45,6 +66,7 @@ export default function Carrito({carrito, actualizarCantidad}) {
 
                               <p className={styles.precio}>$<span>{producto.precio}</span></p>
                               <p className={styles.subtotal}>Subtotal: $<span>{producto.cantidad * producto.precio}</span></p>
+                           
                             </div>
 
                         </div>
@@ -54,7 +76,7 @@ export default function Carrito({carrito, actualizarCantidad}) {
 
                 <aside className={styles.resumen}> 
                     <h3>Resumen del Pedido</h3>
-                    <p>Total a pagar</p>
+                    <p>Total a pagar ${total}</p>
                 </aside>
 
             </div>

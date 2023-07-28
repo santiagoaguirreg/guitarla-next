@@ -64,4 +64,6 @@
     background-color: rgba(181, 181, 216, 0.439);
     padding: 3rem;
     border-radius: 1rem;
+    position: sticky;
+    top: 3rem;
 }
