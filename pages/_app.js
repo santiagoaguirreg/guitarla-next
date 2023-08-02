@@ -1,9 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
 
-const [carrito, setCarrito] = useState([])
+const carritoLS = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('carrito')) ?? [] : []
+
+const [carrito, setCarrito] = useState(carritoLS)
+const [paginaLista, setPaginaLista] = useState(false)
+
+useEffect(() => {
+  setPaginaLista(true)
+}, [])
+
+useEffect(() => {
+ localStorage.setItem('carrito', JSON.stringify(carrito))
+}, [carrito])
 
 
 const agregarCarrito = guitarra => {
@@ -45,14 +56,14 @@ window.localStorage.setItem('carrito', JSON.stringify( carrito ));
 
 
 
-  return <Component {...pageProps} 
+  return paginaLista ? <Component {...pageProps} 
   
   carrito={carrito}
   agregarCarrito={agregarCarrito}
   eliminarProducto={eliminarProducto}
   actualizarCantidad={actualizarCantidad}
   
-  />
+  /> : null
 
 }
 
