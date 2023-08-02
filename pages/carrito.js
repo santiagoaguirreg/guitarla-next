@@ -3,7 +3,7 @@ import Layout from '../components/layout'
 import styles from '../styles/carrito.module.css'
 import Image from 'next/image'
 
-export default function Carrito({carrito, actualizarCantidad}) {
+export default function Carrito({carrito, actualizarCantidad, eliminarProducto}) {
 
   const [total, setTotal] = useState(0);
 
@@ -66,8 +66,16 @@ useEffect(() => {
 
                               <p className={styles.precio}>$<span>{producto.precio}</span></p>
                               <p className={styles.subtotal}>Subtotal: $<span>{producto.cantidad * producto.precio}</span></p>
-                           
+                       
                             </div>
+
+                            <button
+                             type='button'
+                             className={styles.eliminar}
+                             onClick={() => eliminarProducto(producto.id)}
+                            >
+                              x
+                            </button>
 
                         </div>
                       ) )
